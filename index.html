@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Dars Jadvali</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #5b4cfd;
+            --color-secondary: #ff6b9d;
+            --color-success: #00d4aa;
+            --color-warning: #ffc107;
+            --color-danger: #ff5757;
+            --color-blue: #4e9aff;
+            --color-purple: #9d5cff;
+            --color-orange: #ff9e5c;
+            --color-green: #5cff9e;
+            --color-text: #2d3748;
+            --color-text-light: #718096;
+            --color-bg: #f7fafc;
+            --color-white: #ffffff;
+            --color-border: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(91, 76, 253, 0.1);
+            --shadow-md: 0 8px 24px rgba(91, 76, 253, 0.15);
+            --shadow-lg: 0 16px 48px rgba(91, 76, 253, 0.2);
+            --font-display: 'Fredoka', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--color-text);
+            overflow-x: hidden;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 107, 157, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(78, 154, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(92, 255, 158, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Auth Section */
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .auth-container {
+            background: var(--color-white);
+            border-radius: 30px;
+            padding: 50px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow-lg);
+            animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-icon {
+            font-size: 80px;
+            margin-bottom: 15px;
+            animation: bounce 2s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo-title {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .logo-subtitle {
+            color: var(--color-text-light);
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 8px;
+            background: var(--color-bg);
+            padding: 6px;
+            border-radius: 50px;
+            margin-bottom: 35px;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-display);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--color-text-light);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .auth-tab.active {
+            background: linear-gradient(135deg, var(--color-primary), #7b6cff);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-label {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 10px;
+        }
+
+        .form-input-wrapper {
+            position: relative;
+        }
+
+        .form-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: var(--color-text-light);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 18px 16px 52px;
+            border: 2px solid var(--color-border);
+            border-radius: 16px;
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--color-text);
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 4px rgba(91, 76, 253, 0.1);
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 16px 18px;
+            border: 2px solid var(--color-border);
+            border-radius: 16px;
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--color-text);
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 4px rgba(91, 76, 253, 0.1);
+        }
+
+        .btn {
+            padding: 16px 28px;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: linear-gradient(135deg, var(--color-primary), #7b6cff);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: var(--color-white);
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .message {
+            padding: 14px 18px;
+            border-radius: 14px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-message {
+            background: rgba(255, 87, 87, 0.15);
+            border: 2px solid var(--color-danger);
+            color: var(--color-danger);
+        }
+
+        .success-message {
+            background: rgba(0, 212, 170, 0.15);
+            border: 2px solid var(--color-success);
+            color: var(--color-success);
+        }
+
+        .divider {
+            position: relative;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: var(--color-border);
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 15px;
+            position: relative;
+            color: var(--color-text-light);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .remember-me input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .forgot-link {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Dashboard Container */
+        .dashboard-wrapper {
+            display: none;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            background: var(--color-white);
+            border-radius: 30px;
+            padding: 30px 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content h1 {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+
+        .header-content p {
+            color: var(--color-text-light);
+            font-size: 16px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .user-details h3 {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .user-details p {
+            font-size: 13px;
+            color: var(--color-text-light);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Main Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--color-white);
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: var(--shadow-md);
+            animation: fadeInCard 0.6s ease backwards;
+        }
+
+        @keyframes fadeInCard {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            font-size: 24px;
+        }
+
+        /* Class Selector */
+        .class-selector {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .class-btn {
+            padding: 16px 20px;
+            background: var(--color-bg);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .class-btn:hover {
+            background: #e8edff;
+            border-color: var(--color-primary);
+        }
+
+        .class-btn.active {
+            background: linear-gradient(135deg, var(--color-primary), #7b6cff);
+            color: white;
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: var(--color-bg);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateX(5px);
+            background: #e8edff;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .stat-icon.blue { background: rgba(78, 154, 255, 0.15); }
+        .stat-icon.green { background: rgba(0, 212, 170, 0.15); }
+        .stat-icon.orange { background: rgba(255, 158, 92, 0.15); }
+
+        .stat-content h4 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 2px;
+        }
+
+        .stat-content p {
+            font-size: 13px;
+            color: var(--color-text-light);
+            font-weight: 500;
+        }
+
+        /* Schedule */
+        .schedule-wrapper {
+            background: var(--color-white);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            animation: fadeInCard 0.6s ease 0.2s backwards;
+        }
+
+        .schedule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .schedule-title {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .day-selector {
+            display: flex;
+            gap: 8px;
+            background: var(--color-bg);
+            padding: 6px;
+            border-radius: 50px;
+        }
+
+        .day-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-text-light);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .day-btn:hover {
+            background: rgba(91, 76, 253, 0.1);
+            color: var(--color-primary);
+        }
+
+        .day-btn.active {
+            background: var(--color-primary);
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Lessons */
+        .lessons-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .lesson-card {
+            background: var(--color-bg);
+            border-radius: 20px;
+            padding: 20px 25px;
+            border-left: 5px solid var(--color-primary);
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
+            gap: 20px;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: slideInLesson 0.5s ease backwards;
+        }
+
+        @keyframes slideInLesson {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .lesson-card:nth-child(1) { animation-delay: 0.1s; }
+        .lesson-card:nth-child(2) { animation-delay: 0.15s; }
+        .lesson-card:nth-child(3) { animation-delay: 0.2s; }
+        .lesson-card:nth-child(4) { animation-delay: 0.25s; }
+        .lesson-card:nth-child(5) { animation-delay: 0.3s; }
+        .lesson-card:nth-child(6) { animation-delay: 0.35s; }
+        .lesson-card:nth-child(7) { animation-delay: 0.4s; }
+
+        .lesson-card:hover {
+            background: white;
+            box-shadow: var(--shadow-md);
+            transform: translateX(8px);
+        }
+
+        .lesson-card.math { border-left-color: var(--color-blue); }
+        .lesson-card.physics { border-left-color: var(--color-purple); }
+        .lesson-card.chemistry { border-left-color: var(--color-green); }
+        .lesson-card.biology { border-left-color: var(--color-success); }
+        .lesson-card.literature { border-left-color: var(--color-secondary); }
+        .lesson-card.history { border-left-color: var(--color-orange); }
+        .lesson-card.english { border-left-color: var(--color-danger); }
+        .lesson-card.pe { border-left-color: var(--color-warning); }
+
+        .lesson-time {
+            text-align: center;
+        }
+
+        .lesson-number {
+            width: 35px;
+            height: 35px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--color-primary), #7b6cff);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 18px;
+            margin: 0 auto 8px;
+        }
+
+        .time-range {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .lesson-info {
+            flex: 1;
+        }
+
+        .lesson-name {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 5px;
+        }
+
+        .lesson-teacher {
+            font-size: 14px;
+            color: var(--color-text-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lesson-room {
+            background: white;
+            padding: 12px 20px;
+            border-radius: 14px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .room-label {
+            font-size: 11px;
+            color: var(--color-text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .room-number {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeInModal 0.3s ease;
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            animation: slideUpModal 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideUpModal {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-title {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--color-bg);
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: var(--color-danger);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .color-picker {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .color-option {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.selected {
+            border-color: var(--color-text);
+            transform: scale(1.15);
+        }
+
+        .color-option.selected::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .color-blue { background: var(--color-blue); }
+        .color-purple { background: var(--color-purple); }
+        .color-green { background: var(--color-green); }
+        .color-success { background: var(--color-success); }
+        .color-secondary { background: var(--color-secondary); }
+        .color-orange { background: var(--color-orange); }
+        .color-danger { background: var(--color-danger); }
+        .color-warning { background: var(--color-warning); }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .empty-icon {
+            font-size: 100px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .empty-title {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 10px;
+        }
+
+        .empty-text {
+            font-size: 16px;
+            color: var(--color-text-light);
+            margin-bottom: 25px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                grid-row: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .auth-container {
+                padding: 35px 25px;
+            }
+
+            .logo-icon {
+                font-size: 60px;
+            }
+
+            .logo-title {
+                font-size: 28px;
+            }
+
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                padding: 25px;
+            }
+
+            .header-content h1 {
+                font-size: 32px;
+            }
+
+            .header-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .user-info {
+                flex-direction: column;
+            }
+
+            .day-selector {
+                flex-wrap: wrap;
+            }
+
+            .lesson-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .lesson-time {
+                padding-bottom: 15px;
+                border-bottom: 2px solid var(--color-border);
+            }
+
+            .lesson-room {
+                margin-top: 15px;
+                padding-top: 15px;
+                border-top: 2px solid var(--color-border);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .schedule-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .day-selector {
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Auth Wrapper -->
+    <div class="auth-wrapper" id="authWrapper">
+        <div class="auth-container">
+            <div class="auth-logo">
+                <div class="logo-icon">🎓</div>
+                <h1 class="logo-title">E-Dars Jadvali</h1>
+                <p class="logo-subtitle">O'quv jarayonini boshqarish tizimi</p>
+            </div>
+
+            <!-- Auth Tabs -->
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="switchAuthTab('login')">Kirish</button>
+                <button class="auth-tab" onclick="switchAuthTab('register')">Ro'yxatdan o'tish</button>
+            </div>
+
+            <!-- Login Form -->
+            <form class="auth-form active" id="loginForm" onsubmit="handleLogin(event)">
+                <div class="error-message" id="loginError"></div>
+
+                <div class="form-group">
+                    <label class="form-label">Login</label>
+                    <div class="form-input-wrapper">
+                        <span class="form-icon">👤</span>
+                        <input type="text" class="form-input" id="loginUsername" placeholder="Login yoki email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Parol</label>
+                    <div class="form-input-wrapper">
+                        <span class="form-icon">🔒</span>
+                        <input type="password" class="form-input" id="loginPassword" placeholder="Parolingiz" required>
+                    </div>
+                </div>
+
+                <div class="remember-forgot">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        <span>Eslab qolish</span>
+                    </label>
+                    <a href="#" class="forgot-link">Parolni unutdingizmi?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    🚀 Kirish
+                </button>
+            </form>
+
+            <!-- Register Form -->
+            <form class="auth-form" id="registerForm" onsubmit="handleRegister(event)">
+                <div class="error-message" id="registerError"></div>
+                <div class="success-message" id="registerSuccess"></div>
+
+                <div class="form-group">
+                    <label class="form-label">To'liq ism</label>
+                    <div class="form-input-wrapper">
+                        <span class="form-icon">👤</span>
+                        <input type="text" class="form-input" id="registerName" placeholder="Ism Familiya" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Login</label>
+                    <div class="form-input-wrapper">
+                        <span class="form-icon">📝</span>
+                        <input type="text" class="form-input" id="registerUsername" placeholder="Loginni kiriting" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <div class="form-input-wrapper">
+                        <span class="form-icon">✉️</span>
+                        <input type="email" class="form-input" id="registerEmail" placeholder="email@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Sinf</label>
+                    <select class="form-select" id="registerClass" required>
+                        <option value="">Sinfni tanlang</option>
+                        <option value="9-A">9-A sinf</option>
+                        <option value="9-B">9-B sinf</option>
+                        <option value="10-A">10-A sinf</option>
+                        <option value="10-B">10-B sinf</option>
+                        <option value="11-A">11-A sinf</option>
+                        <option value="11-B">11-B sinf</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Parol</label>
+                    <div class="form-input-wrapper">
+                        <span class="form-icon">🔒</span>
+                        <input type="password" class="form-input" id="registerPassword" placeholder="Parol yarating" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Parolni tasdiqlash</label>
+                    <div class="form-input-wrapper">
+                        <span class="form-icon">🔐</span>
+                        <input type="password" class="form-input" id="registerConfirmPassword" placeholder="Parolni qayta kiriting" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    ✅ Ro'yxatdan o'tish
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard-wrapper" id="dashboardWrapper">
+        <div class="container">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-content">
+                    <h1>📚 Dars Jadvali</h1>
+                    <p id="welcomeMessage">Xush kelibsiz!</p>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">👤</div>
+                    <div class="user-details">
+                        <h3 id="userName">O'quvchi</h3>
+                        <p id="userClass">9-A sinf</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" onclick="printSchedule()">
+                        🖨️ Chop etish
+                    </button>
+                    <button class="btn btn-primary" onclick="openModal()">
+                        ➕ Dars qo'shish
+                    </button>
+                    <button class="btn btn-secondary" onclick="handleLogout()">
+                        🚪 Chiqish
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Grid -->
+            <div class="main-grid">
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Class Selector -->
+                    <div class="card">
+                        <h3 class="card-title">
+                            <span class="card-icon">🎓</span>
+                            Sinfni tanlang
+                        </h3>
+                        <div class="class-selector" id="classSelector">
+                            <!-- Classes will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="card">
+                        <h3 class="card-title">
+                            <span class="card-icon">📊</span>
+                            Statistika
+                        </h3>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <div class="stat-icon blue">📖</div>
+                                <div class="stat-content">
+                                    <h4 id="totalLessons">0</h4>
+                                    <p>Jami darslar</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon green">✅</div>
+                                <div class="stat-content">
+                                    <h4 id="todayLessons">0</h4>
+                                    <p>Bugungi darslar</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon orange">👨‍🏫</div>
+                                <div class="stat-content">
+                                    <h4 id="totalTeachers">0</h4>
+                                    <p>O'qituvchilar</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule -->
+                <div class="schedule-wrapper">
+                    <div class="schedule-header">
+                        <h2 class="schedule-title" id="scheduleTitle">Haftalik Jadval</h2>
+                        <div class="day-selector">
+                            <button class="day-btn active" onclick="selectDay(this, 'monday')">Dush</button>
+                            <button class="day-btn" onclick="selectDay(this, 'tuesday')">Sesh</button>
+                            <button class="day-btn" onclick="selectDay(this, 'wednesday')">Chor</button>
+                            <button class="day-btn" onclick="selectDay(this, 'thursday')">Pay</button>
+                            <button class="day-btn" onclick="selectDay(this, 'friday')">Juma</button>
+                            <button class="day-btn" onclick="selectDay(this, 'saturday')">Shan</button>
+                        </div>
+                    </div>
+
+                    <div class="lessons-grid" id="lessonsContainer">
+                        <!-- Lessons will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="addLessonModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Yangi dars qo'shish</h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+
+            <form onsubmit="addLesson(event)">
+                <div class="form-group">
+                    <label class="form-label">Dars nomi</label>
+                    <input type="text" class="form-input" id="lessonName" placeholder="Matematika" required style="padding-left: 18px;">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">O'qituvchi</label>
+                    <input type="text" class="form-input" id="lessonTeacher" placeholder="Olimov A.A." required style="padding-left: 18px;">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Kun</label>
+                        <select class="form-select" id="lessonDay" required>
+                            <option value="monday">Dushanba</option>
+                            <option value="tuesday">Seshanba</option>
+                            <option value="wednesday">Chorshanba</option>
+                            <option value="thursday">Payshanba</option>
+                            <option value="friday">Juma</option>
+                            <option value="saturday">Shanba</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Xona raqami</label>
+                        <input type="text" class="form-input" id="lessonRoom" placeholder="201" required style="padding-left: 18px;">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Boshlanish vaqti</label>
+                        <input type="time" class="form-input" id="lessonStartTime" required style="padding-left: 18px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tugash vaqti</label>
+                        <input type="time" class="form-input" id="lessonEndTime" required style="padding-left: 18px;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Rang</label>
+                    <div class="color-picker">
+                        <div class="color-option color-blue selected" data-color="blue" onclick="selectColor(this)"></div>
+                        <div class="color-option color-purple" data-color="purple" onclick="selectColor(this)"></div>
+                        <div class="color-option color-green" data-color="green" onclick="selectColor(this)"></div>
+                        <div class="color-option color-success" data-color="success" onclick="selectColor(this)"></div>
+                        <div class="color-option color-secondary" data-color="secondary" onclick="selectColor(this)"></div>
+                        <div class="color-option color-orange" data-color="orange" onclick="selectColor(this)"></div>
+                        <div class="color-option color-danger" data-color="danger" onclick="selectColor(this)"></div>
+                        <div class="color-option color-warning" data-color="warning" onclick="selectColor(this)"></div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                    ✅ Saqlash
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Data structure
+        let currentUser = null;
+        let currentClass = '';
+        let currentDay = 'monday';
+        let selectedColor = 'blue';
+        let scheduleData = {
+            '9-A': {
+                monday: [
+                    { number: 1, name: 'Matematika', teacher: 'Olimov A.A.', room: '201', startTime: '08:00', endTime: '08:45', color: 'blue' },
+                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'purple' },
+                    { number: 3, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '09:50', endTime: '10:35', color: 'danger' },
+                    { number: 4, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '10:55', endTime: '11:40', color: 'orange' },
+                    { number: 5, name: 'Adabiyot', teacher: 'Yusupova S.S.', room: '104', startTime: '11:50', endTime: '12:35', color: 'secondary' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'warning' }
+                ],
+                tuesday: [
+                    { number: 1, name: 'Algebra', teacher: 'Olimov A.A.', room: '201', startTime: '08:00', endTime: '08:45', color: 'blue' },
+                    { number: 2, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '08:55', endTime: '09:40', color: 'green' },
+                    { number: 3, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '09:50', endTime: '10:35', color: 'success' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'purple' },
+                    { number: 5, name: 'Ona tili', teacher: 'Yusupova S.S.', room: '104', startTime: '11:50', endTime: '12:35', color: 'secondary' }
+                ],
+                wednesday: [],
+                thursday: [],
+                friday: [],
+                saturday: []
+            },
+            '9-B': { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [] },
+            '10-A': { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [] },
+            '10-B': { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [] },
+            '11-A': { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [] },
+            '11-B': { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [] }
+        };
+
+        // Switch auth tabs
+        function switchAuthTab(tab) {
+            const tabs = document.querySelectorAll('.auth-tab');
+            const forms = document.querySelectorAll('.auth-form');
+
+            tabs.forEach(t => t.classList.remove('active'));
+            forms.forEach(f => f.classList.remove('active'));
+
+            if (tab === 'login') {
+                tabs[0].classList.add('active');
+                document.getElementById('loginForm').classList.add('active');
+            } else {
+                tabs[1].classList.add('active');
+                document.getElementById('registerForm').classList.add('active');
+            }
+
+            hideMessage('loginError');
+            hideMessage('registerError');
+            hideMessage('registerSuccess');
+        }
+
+        // Show/hide message
+        function showMessage(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.style.display = 'block';
+        }
+
+        function hideMessage(elementId) {
+            document.getElementById(elementId).style.display = 'none';
+        }
+
+        // Handle Login
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            hideMessage('loginError');
+
+            // Get users from localStorage
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const user = users.find(u => (u.username === username || u.email === username) && u.password === password);
+
+            if (!user) {
+                showMessage('loginError', 'Login yoki parol noto\'g\'ri!');
+                return;
+            }
+
+            currentUser = user;
+            currentClass = user.class;
+            localStorage.setItem('currentUser', JSON.stringify(user));
+
+            showDashboard();
+        }
+
+        // Handle Register
+        function handleRegister(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('registerName').value.trim();
+            const username = document.getElementById('registerUsername').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+            const classValue = document.getElementById('registerClass').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+            hideMessage('registerError');
+            hideMessage('registerSuccess');
+
+            if (password !== confirmPassword) {
+                showMessage('registerError', 'Parollar mos kelmadi!');
+                return;
+            }
+
+            if (password.length < 6) {
+                showMessage('registerError', 'Parol kamida 6 belgidan iborat bo\'lishi kerak!');
+                return;
+            }
+
+            // Get existing users
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+            // Check if username or email exists
+            if (users.find(u => u.username === username)) {
+                showMessage('registerError', 'Bu login band!');
+                return;
+            }
+
+            if (users.find(u => u.email === email)) {
+                showMessage('registerError', 'Bu email allaqachon ro\'yxatdan o\'tgan!');
+                return;
+            }
+
+            // Add new user
+            const newUser = { name, username, email, class: classValue, password };
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+
+            showMessage('registerSuccess', 'Ro\'yxatdan o\'tish muvaffaqiyatli! Endi tizimga kirishingiz mumkin.');
+
+            setTimeout(() => {
+                switchAuthTab('login');
+                document.getElementById('registerForm').reset();
+            }, 2000);
+        }
+
+        // Show Dashboard
+        function showDashboard() {
+            document.getElementById('authWrapper').style.display = 'none';
+            document.getElementById('dashboardWrapper').style.display = 'block';
+
+            // Update user info
+            document.getElementById('userName').textContent = currentUser.name;
+            document.getElementById('userClass').textContent = currentUser.class;
+            document.getElementById('welcomeMessage').textContent = `Xush kelibsiz, ${currentUser.name}!`;
+            document.getElementById('userAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
+
+            // Load class selector
+            loadClassSelector();
+            loadSchedule();
+        }
+
+        // Load class selector
+        function loadClassSelector() {
+            const classes = ['9-A', '9-B', '10-A', '10-B', '11-A', '11-B'];
+            const container = document.getElementById('classSelector');
+            
+            container.innerHTML = classes.map(cls => 
+                `<button class="class-btn ${cls === currentClass ? 'active' : ''}" onclick="selectClass(this, '${cls}')">${cls} sinf</button>`
+            ).join('');
+        }
+
+        // Load schedule
+        function loadSchedule() {
+            const container = document.getElementById('lessonsContainer');
+            const lessons = scheduleData[currentClass][currentDay];
+
+            if (lessons.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📅</div>
+                        <h3 class="empty-title">Darslar yo'q</h3>
+                        <p class="empty-text">Bu kun uchun hali darslar qo'shilmagan</p>
+                        <button class="btn btn-primary" onclick="openModal()">Dars qo'shish</button>
+                    </div>
+                `;
+                updateStats();
+                return;
+            }
+
+            container.innerHTML = lessons.map(lesson => `
+                <div class="lesson-card ${lesson.color}">
+                    <div class="lesson-time">
+                        <div class="lesson-number">${lesson.number}</div>
+                        <div class="time-range">${lesson.startTime} - ${lesson.endTime}</div>
+                    </div>
+                    <div class="lesson-info">
+                        <div class="lesson-name">${lesson.name}</div>
+                        <div class="lesson-teacher">👨‍🏫 ${lesson.teacher}</div>
+                    </div>
+                    <div class="lesson-room">
+                        <div class="room-label">Xona</div>
+                        <div class="room-number">${lesson.room}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            updateStats();
+        }
+
+        // Update statistics
+        function updateStats() {
+            let totalLessons = 0;
+            let teachers = new Set();
+
+            Object.values(scheduleData[currentClass]).forEach(dayLessons => {
+                totalLessons += dayLessons.length;
+                dayLessons.forEach(lesson => teachers.add(lesson.teacher));
+            });
+
+            const todayLessons = scheduleData[currentClass][currentDay].length;
+
+            document.getElementById('totalLessons').textContent = totalLessons;
+            document.getElementById('todayLessons').textContent = todayLessons;
+            document.getElementById('totalTeachers').textContent = teachers.size;
+        }
+
+        // Select class
+        function selectClass(btn, className) {
+            document.querySelectorAll('.class-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentClass = className;
+            loadSchedule();
+        }
+
+        // Select day
+        function selectDay(btn, day) {
+            document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentDay = day;
+            loadSchedule();
+
+            const dayNames = {
+                monday: 'Dushanba',
+                tuesday: 'Seshanba',
+                wednesday: 'Chorshanba',
+                thursday: 'Payshanba',
+                friday: 'Juma',
+                saturday: 'Shanba'
+            };
+            document.getElementById('scheduleTitle').textContent = `${dayNames[day]} - ${currentClass}`;
+        }
+
+        // Modal functions
+        function openModal() {
+            document.getElementById('addLessonModal').classList.add('active');
+            document.getElementById('lessonDay').value = currentDay;
+        }
+
+        function closeModal() {
+            document.getElementById('addLessonModal').classList.remove('active');
+            document.querySelector('#addLessonModal form').reset();
+            selectColor(document.querySelector('.color-option'));
+        }
+
+        // Select color
+        function selectColor(element) {
+            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedColor = element.dataset.color;
+        }
+
+        // Add lesson
+        function addLesson(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('lessonName').value;
+            const teacher = document.getElementById('lessonTeacher').value;
+            const day = document.getElementById('lessonDay').value;
+            const room = document.getElementById('lessonRoom').value;
+            const startTime = document.getElementById('lessonStartTime').value;
+            const endTime = document.getElementById('lessonEndTime').value;
+
+            const lessons = scheduleData[currentClass][day];
+            const newLesson = {
+                number: lessons.length + 1,
+                name,
+                teacher,
+                room,
+                startTime,
+                endTime,
+                color: selectedColor
+            };
+
+            scheduleData[currentClass][day].push(newLesson);
+            
+            if (day === currentDay) {
+                loadSchedule();
+            }
+
+            closeModal();
+        }
+
+        // Print schedule
+        function printSchedule() {
+            const printWindow = window.open('', '_blank');
+            const lessons = scheduleData[currentClass][currentDay];
+            
+            const dayNames = {
+                monday: 'Dushanba',
+                tuesday: 'Seshanba',
+                wednesday: 'Chorshanba',
+                thursday: 'Payshanba',
+                friday: 'Juma',
+                saturday: 'Shanba'
+            };
+
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>Dars Jadvali - ${currentClass}</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 40px; }
+                        h1 { text-align: center; color: #5b4cfd; }
+                        table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+                        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+                        th { background: #5b4cfd; color: white; }
+                        tr:nth-child(even) { background: #f9f9f9; }
+                    </style>
+                </head>
+                <body>
+                    <h1>${currentClass} - ${dayNames[currentDay]}</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>№</th>
+                                <th>Vaqt</th>
+                                <th>Dars</th>
+                                <th>O'qituvchi</th>
+                                <th>Xona</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${lessons.map(lesson => `
+                                <tr>
+                                    <td>${lesson.number}</td>
+                                    <td>${lesson.startTime} - ${lesson.endTime}</td>
+                                    <td>${lesson.name}</td>
+                                    <td>${lesson.teacher}</td>
+                                    <td>${lesson.room}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </body>
+                </html>
+            `);
+            
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Logout
+        function handleLogout() {
+            if (confirm('Rostdan ham tizimdan chiqmoqchimisiz?')) {
+                localStorage.removeItem('currentUser');
+                currentUser = null;
+                location.reload();
+            }
+        }
+
+        // Check login on load
+        window.addEventListener('load', function() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                currentClass = currentUser.class;
+                showDashboard();
+            }
+        });
+    </script>
+</body>
+</html>
