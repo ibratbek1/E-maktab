@@ -42,7 +42,6 @@
             overflow-x: hidden;
         }
 
-        /* Background Pattern */
         body::before {
             content: '';
             position: fixed;
@@ -58,7 +57,6 @@
             z-index: 0;
         }
 
-        /* Auth Section */
         .auth-wrapper {
             min-height: 100vh;
             display: flex;
@@ -255,17 +253,6 @@
             box-shadow: var(--shadow-md);
         }
 
-        .btn-secondary {
-            background: var(--color-white);
-            color: var(--color-primary);
-            border: 2px solid var(--color-primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--color-primary);
-            color: white;
-        }
-
         .message {
             padding: 14px 18px;
             border-radius: 14px;
@@ -297,31 +284,6 @@
             background: rgba(0, 212, 170, 0.15);
             border: 2px solid var(--color-success);
             color: var(--color-success);
-        }
-
-        .divider {
-            position: relative;
-            text-align: center;
-            margin: 25px 0;
-        }
-
-        .divider::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            width: 100%;
-            height: 1px;
-            background: var(--color-border);
-        }
-
-        .divider span {
-            background: white;
-            padding: 0 15px;
-            position: relative;
-            color: var(--color-text-light);
-            font-size: 13px;
-            font-weight: 500;
         }
 
         .remember-forgot {
@@ -360,7 +322,6 @@
             display: none !important;
         }
 
-        /* Dashboard Container */
         .dashboard-wrapper {
             display: none;
         }
@@ -373,7 +334,6 @@
             z-index: 1;
         }
 
-        /* Header */
         .header {
             background: var(--color-white);
             border-radius: 30px;
@@ -448,7 +408,17 @@
             gap: 15px;
         }
 
-        /* Main Grid */
+        .btn-secondary {
+            background: var(--color-white);
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
         .main-grid {
             display: grid;
             grid-template-columns: 300px 1fr;
@@ -456,7 +426,6 @@
             margin-bottom: 30px;
         }
 
-        /* Sidebar */
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -484,7 +453,6 @@
 
         .card:nth-child(1) { animation-delay: 0.1s; }
         .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
 
         .card-title {
             font-family: var(--font-display);
@@ -501,7 +469,6 @@
             font-size: 24px;
         }
 
-        /* Class Selector */
         .class-selector {
             display: flex;
             flex-direction: column;
@@ -534,7 +501,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* Stats */
         .stats {
             display: flex;
             flex-direction: column;
@@ -584,7 +550,6 @@
             font-weight: 500;
         }
 
-        /* Schedule */
         .schedule-wrapper {
             background: var(--color-white);
             border-radius: 24px;
@@ -641,7 +606,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* Lessons */
         .lessons-grid {
             display: grid;
             gap: 20px;
@@ -693,6 +657,11 @@
         .lesson-card.history { border-left-color: var(--color-orange); }
         .lesson-card.english { border-left-color: var(--color-danger); }
         .lesson-card.pe { border-left-color: var(--color-warning); }
+        .lesson-card.informatics { border-left-color: var(--color-purple); }
+        .lesson-card.geography { border-left-color: var(--color-success); }
+        .lesson-card.language { border-left-color: var(--color-secondary); }
+        .lesson-card.algebra { border-left-color: var(--color-blue); }
+        .lesson-card.geometry { border-left-color: #4e9aff; }
 
         .lesson-time {
             text-align: center;
@@ -762,170 +731,6 @@
             color: var(--color-primary);
         }
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeInModal 0.3s ease;
-        }
-
-        @keyframes fadeInModal {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 30px;
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: var(--shadow-lg);
-            animation: slideUpModal 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes slideUpModal {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .modal-title {
-            font-family: var(--font-display);
-            font-size: 32px;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .close-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--color-bg);
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .close-btn:hover {
-            background: var(--color-danger);
-            color: white;
-            transform: rotate(90deg);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .color-picker {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-        }
-
-        .color-option {
-            width: 100%;
-            aspect-ratio: 1;
-            border-radius: 12px;
-            border: 3px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .color-option:hover {
-            transform: scale(1.1);
-        }
-
-        .color-option.selected {
-            border-color: var(--color-text);
-            transform: scale(1.15);
-        }
-
-        .color-option.selected::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .color-blue { background: var(--color-blue); }
-        .color-purple { background: var(--color-purple); }
-        .color-green { background: var(--color-green); }
-        .color-success { background: var(--color-success); }
-        .color-secondary { background: var(--color-secondary); }
-        .color-orange { background: var(--color-orange); }
-        .color-danger { background: var(--color-danger); }
-        .color-warning { background: var(--color-warning); }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        .empty-icon {
-            font-size: 100px;
-            margin-bottom: 20px;
-            opacity: 0.5;
-        }
-
-        .empty-title {
-            font-family: var(--font-display);
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 10px;
-        }
-
-        .empty-text {
-            font-size: 16px;
-            color: var(--color-text-light);
-            margin-bottom: 25px;
-        }
-
-        /* Responsive */
         @media (max-width: 1024px) {
             .main-grid {
                 grid-template-columns: 1fr;
@@ -995,14 +800,6 @@
                 border-top: 2px solid var(--color-border);
             }
 
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content {
-                padding: 30px 20px;
-            }
-
             .schedule-header {
                 flex-direction: column;
                 align-items: stretch;
@@ -1024,7 +821,6 @@
                 <p class="logo-subtitle">O'quv jarayonini boshqarish tizimi</p>
             </div>
 
-            <!-- Auth Tabs -->
             <div class="auth-tabs">
                 <button class="auth-tab active" onclick="switchAuthTab('login')">Kirish</button>
                 <button class="auth-tab" onclick="switchAuthTab('register')">Ro'yxatdan o'tish</button>
@@ -1131,7 +927,6 @@
     <!-- Dashboard -->
     <div class="dashboard-wrapper" id="dashboardWrapper">
         <div class="container">
-            <!-- Header -->
             <div class="header">
                 <div class="header-content">
                     <h1>📚 Dars Jadvali</h1>
@@ -1148,30 +943,22 @@
                     <button class="btn btn-secondary" onclick="printSchedule()">
                         🖨️ Chop etish
                     </button>
-                 
-                    </button>
                     <button class="btn btn-secondary" onclick="handleLogout()">
                         🚪 Chiqish
                     </button>
                 </div>
             </div>
 
-            <!-- Main Grid -->
             <div class="main-grid">
-                <!-- Sidebar -->
                 <div class="sidebar">
-                    <!-- Class Selector -->
                     <div class="card">
                         <h3 class="card-title">
                             <span class="card-icon">🎓</span>
                             Sinfni tanlang
                         </h3>
-                        <div class="class-selector" id="classSelector">
-                            <!-- Classes will be loaded here -->
-                        </div>
+                        <div class="class-selector" id="classSelector"></div>
                     </div>
 
-                    <!-- Stats -->
                     <div class="card">
                         <h3 class="card-title">
                             <span class="card-icon">📊</span>
@@ -1203,7 +990,6 @@
                     </div>
                 </div>
 
-                <!-- Schedule -->
                 <div class="schedule-wrapper">
                     <div class="schedule-header">
                         <h2 class="schedule-title" id="scheduleTitle">Haftalik Jadval</h2>
@@ -1217,121 +1003,296 @@
                         </div>
                     </div>
 
-                    <div class="lessons-grid" id="lessonsContainer">
-                        <!-- Lessons will be loaded here -->
-                    </div>
+                    <div class="lessons-grid" id="lessonsContainer"></div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal" id="addLessonModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Yangi dars qo'shish</h2>
-                <button class="close-btn" onclick="closeModal()">×</button>
-            </div>
-
-            <form onsubmit="addLesson(event)">
-                <div class="form-group">
-                    <label class="form-label">Dars nomi</label>
-                    <input type="text" class="form-input" id="lessonName" placeholder="Matematika" required style="padding-left: 18px;">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">O'qituvchi</label>
-                    <input type="text" class="form-input" id="lessonTeacher" placeholder="Olimov A.A." required style="padding-left: 18px;">
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Kun</label>
-                        <select class="form-select" id="lessonDay" required>
-                            <option value="monday">Dushanba</option>
-                            <option value="tuesday">Seshanba</option>
-                            <option value="wednesday">Chorshanba</option>
-                            <option value="thursday">Payshanba</option>
-                            <option value="friday">Juma</option>
-                            <option value="saturday">Shanba</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Xona raqami</label>
-                        <input type="text" class="form-input" id="lessonRoom" placeholder="201" required style="padding-left: 18px;">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Boshlanish vaqti</label>
-                        <input type="time" class="form-input" id="lessonStartTime" required style="padding-left: 18px;">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Tugash vaqti</label>
-                        <input type="time" class="form-input" id="lessonEndTime" required style="padding-left: 18px;">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Rang</label>
-                    <div class="color-picker">
-                        <div class="color-option color-blue selected" data-color="blue" onclick="selectColor(this)"></div>
-                        <div class="color-option color-purple" data-color="purple" onclick="selectColor(this)"></div>
-                        <div class="color-option color-green" data-color="green" onclick="selectColor(this)"></div>
-                        <div class="color-option color-success" data-color="success" onclick="selectColor(this)"></div>
-                        <div class="color-option color-secondary" data-color="secondary" onclick="selectColor(this)"></div>
-                        <div class="color-option color-orange" data-color="orange" onclick="selectColor(this)"></div>
-                        <div class="color-option color-danger" data-color="danger" onclick="selectColor(this)"></div>
-                        <div class="color-option color-warning" data-color="warning" onclick="selectColor(this)"></div>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                    ✅ Saqlash
-                </button>
-            </form>
         </div>
     </div>
 
     <script>
-        // Data structure
         let currentUser = null;
         let currentClass = '';
         let currentDay = 'monday';
-        let selectedColor = 'blue';
-        let scheduleData = {
+
+        const scheduleData = {
             '9-A': {
                 monday: [
-                    { number: 1, name: 'Matematika', teacher: 'Olimov A.A.', room: '201', startTime: '08:00', endTime: '08:45', color: 'blue' },
-                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'purple' },
-                    { number: 3, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '09:50', endTime: '10:35', color: 'danger' },
-                    { number: 4, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '10:55', endTime: '11:40', color: 'orange' },
-                    { number: 5, name: 'Adabiyot', teacher: 'Yusupova S.S.', room: '104', startTime: '11:50', endTime: '12:35', color: 'secondary' },
-                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'warning' }
+                    { number: 1, name: 'Matematika', teacher: 'Olimov A.A.', room: '201', startTime: '08:00', endTime: '08:45', color: 'math' },
+                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'physics' },
+                    { number: 3, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '09:50', endTime: '10:35', color: 'english' },
+                    { number: 4, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '10:55', endTime: '11:40', color: 'history' },
+                    { number: 5, name: 'Adabiyot', teacher: 'Yusupova S.S.', room: '104', startTime: '11:50', endTime: '12:35', color: 'literature' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'pe' }
                 ],
                 tuesday: [
-                    { number: 1, name: 'Algebra', teacher: 'Olimov A.A.', room: '201', startTime: '08:00', endTime: '08:45', color: 'blue' },
-                    { number: 2, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '08:55', endTime: '09:40', color: 'green' },
-                    { number: 3, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '09:50', endTime: '10:35', color: 'success' },
-                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'purple' },
-                    { number: 5, name: 'Ona tili', teacher: 'Yusupova S.S.', room: '104', startTime: '11:50', endTime: '12:35', color: 'secondary' }
+                    { number: 1, name: 'Algebra', teacher: 'Olimov A.A.', room: '201', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '08:55', endTime: '09:40', color: 'chemistry' },
+                    { number: 3, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '09:50', endTime: '10:35', color: 'geography' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'informatics' },
+                    { number: 5, name: 'Ona tili', teacher: 'Yusupova S.S.', room: '104', startTime: '11:50', endTime: '12:35', color: 'language' }
                 ],
-                wednesday: [],
-                thursday: [],
-                friday: [],
-                saturday: []
+                wednesday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Olimov A.A.', room: '201', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '09:50', endTime: '10:35', color: 'english' },
+                    { number: 4, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '10:55', endTime: '11:40', color: 'history' },
+                    { number: 5, name: 'Adabiyot', teacher: 'Yusupova S.S.', room: '104', startTime: '11:50', endTime: '12:35', color: 'literature' },
+                    { number: 6, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '12:45', endTime: '13:30', color: 'informatics' }
+                ],
+                thursday: [
+                    { number: 1, name: 'Matematika', teacher: 'Olimov A.A.', room: '201', startTime: '08:00', endTime: '08:45', color: 'math' },
+                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'physics' },
+                    { number: 3, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '09:50', endTime: '10:35', color: 'chemistry' },
+                    { number: 4, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '10:55', endTime: '11:40', color: 'geography' },
+                    { number: 5, name: 'Ona tili', teacher: 'Yusupova S.S.', room: '104', startTime: '11:50', endTime: '12:35', color: 'language' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'pe' }
+                ],
+                friday: [
+                    { number: 1, name: 'Algebra', teacher: 'Olimov A.A.', room: '201', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '09:50', endTime: '10:35', color: 'english' },
+                    { number: 4, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '10:55', endTime: '11:40', color: 'history' },
+                    { number: 5, name: 'Adabiyot', teacher: 'Yusupova S.S.', room: '104', startTime: '11:50', endTime: '12:35', color: 'literature' }
+                ],
+                saturday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Olimov A.A.', room: '201', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'physics' },
+                    { number: 3, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '09:50', endTime: '10:35', color: 'chemistry' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'informatics' }
+                ]
             },
-            '9-B': { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [] },
-            '10-A': { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [] },
-            '10-B': { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [] },
-            '11-A': { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [] },
-            '11-B': { monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [] }
+            '9-B': {
+                monday: [
+                    { number: 1, name: 'Matematika', teacher: 'Ibragimov S.S.', room: '202', startTime: '08:00', endTime: '08:45', color: 'math' },
+                    { number: 2, name: 'Ona tili', teacher: 'Ergasheva D.D.', room: '105', startTime: '08:55', endTime: '09:40', color: 'language' },
+                    { number: 3, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '09:50', endTime: '10:35', color: 'english' },
+                    { number: 4, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '10:55', endTime: '11:40', color: 'physics' },
+                    { number: 5, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '11:50', endTime: '12:35', color: 'history' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'pe' }
+                ],
+                tuesday: [
+                    { number: 1, name: 'Algebra', teacher: 'Ibragimov S.S.', room: '202', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '08:55', endTime: '09:40', color: 'chemistry' },
+                    { number: 3, name: 'Adabiyot', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'literature' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'informatics' },
+                    { number: 5, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '11:50', endTime: '12:35', color: 'geography' }
+                ],
+                wednesday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Ibragimov S.S.', room: '202', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Ona tili', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'language' },
+                    { number: 4, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '10:55', endTime: '11:40', color: 'english' },
+                    { number: 5, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '11:50', endTime: '12:35', color: 'history' },
+                    { number: 6, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '12:45', endTime: '13:30', color: 'informatics' }
+                ],
+                thursday: [
+                    { number: 1, name: 'Matematika', teacher: 'Ibragimov S.S.', room: '202', startTime: '08:00', endTime: '08:45', color: 'math' },
+                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'physics' },
+                    { number: 3, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '09:50', endTime: '10:35', color: 'chemistry' },
+                    { number: 4, name: 'Adabiyot', teacher: 'Ergasheva D.D.', room: '105', startTime: '10:55', endTime: '11:40', color: 'literature' },
+                    { number: 5, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '11:50', endTime: '12:35', color: 'geography' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'pe' }
+                ],
+                friday: [
+                    { number: 1, name: 'Algebra', teacher: 'Ibragimov S.S.', room: '202', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Ona tili', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'language' },
+                    { number: 4, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '10:55', endTime: '11:40', color: 'english' },
+                    { number: 5, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '11:50', endTime: '12:35', color: 'history' }
+                ],
+                saturday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Ibragimov S.S.', room: '202', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'physics' },
+                    { number: 3, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '09:50', endTime: '10:35', color: 'chemistry' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'informatics' }
+                ]
+            },
+            '10-A': {
+                monday: [
+                    { number: 1, name: 'Algebra', teacher: 'Valiyev T.T.', room: '203', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'physics' },
+                    { number: 3, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '09:50', endTime: '10:35', color: 'chemistry' },
+                    { number: 4, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '10:55', endTime: '11:40', color: 'english' },
+                    { number: 5, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '11:50', endTime: '12:35', color: 'history' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'pe' }
+                ],
+                tuesday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Valiyev T.T.', room: '203', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Adabiyot', teacher: 'Yusupova S.S.', room: '104', startTime: '09:50', endTime: '10:35', color: 'literature' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'informatics' },
+                    { number: 5, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '11:50', endTime: '12:35', color: 'geography' }
+                ],
+                wednesday: [
+                    { number: 1, name: 'Algebra', teacher: 'Valiyev T.T.', room: '203', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'physics' },
+                    { number: 3, name: 'Ona tili', teacher: 'Yusupova S.S.', room: '104', startTime: '09:50', endTime: '10:35', color: 'language' },
+                    { number: 4, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '10:55', endTime: '11:40', color: 'english' },
+                    { number: 5, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '11:50', endTime: '12:35', color: 'chemistry' },
+                    { number: 6, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '12:45', endTime: '13:30', color: 'informatics' }
+                ],
+                thursday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Valiyev T.T.', room: '203', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Adabiyot', teacher: 'Yusupova S.S.', room: '104', startTime: '09:50', endTime: '10:35', color: 'literature' },
+                    { number: 4, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '10:55', endTime: '11:40', color: 'history' },
+                    { number: 5, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '11:50', endTime: '12:35', color: 'geography' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'pe' }
+                ],
+                friday: [
+                    { number: 1, name: 'Algebra', teacher: 'Valiyev T.T.', room: '203', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'physics' },
+                    { number: 3, name: 'Ona tili', teacher: 'Yusupova S.S.', room: '104', startTime: '09:50', endTime: '10:35', color: 'language' },
+                    { number: 4, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '10:55', endTime: '11:40', color: 'english' },
+                    { number: 5, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '11:50', endTime: '12:35', color: 'chemistry' }
+                ],
+                saturday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Valiyev T.T.', room: '203', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Adabiyot', teacher: 'Yusupova S.S.', room: '104', startTime: '09:50', endTime: '10:35', color: 'literature' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'informatics' }
+                ]
+            },
+            '10-B': {
+                monday: [
+                    { number: 1, name: 'Algebra', teacher: 'Qurbonov F.F.', room: '204', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Ona tili', teacher: 'Ergasheva D.D.', room: '105', startTime: '08:55', endTime: '09:40', color: 'language' },
+                    { number: 3, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '09:50', endTime: '10:35', color: 'physics' },
+                    { number: 4, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '10:55', endTime: '11:40', color: 'english' },
+                    { number: 5, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '11:50', endTime: '12:35', color: 'history' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'pe' }
+                ],
+                tuesday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Qurbonov F.F.', room: '204', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '08:55', endTime: '09:40', color: 'chemistry' },
+                    { number: 3, name: 'Adabiyot', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'literature' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'informatics' },
+                    { number: 5, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '11:50', endTime: '12:35', color: 'geography' }
+                ],
+                wednesday: [
+                    { number: 1, name: 'Algebra', teacher: 'Qurbonov F.F.', room: '204', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Ona tili', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'language' },
+                    { number: 4, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '10:55', endTime: '11:40', color: 'physics' },
+                    { number: 5, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '11:50', endTime: '12:35', color: 'english' },
+                    { number: 6, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '12:45', endTime: '13:30', color: 'informatics' }
+                ],
+                thursday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Qurbonov F.F.', room: '204', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '08:55', endTime: '09:40', color: 'chemistry' },
+                    { number: 3, name: 'Adabiyot', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'literature' },
+                    { number: 4, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '10:55', endTime: '11:40', color: 'history' },
+                    { number: 5, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '11:50', endTime: '12:35', color: 'geography' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'pe' }
+                ],
+                friday: [
+                    { number: 1, name: 'Algebra', teacher: 'Qurbonov F.F.', room: '204', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Ona tili', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'language' },
+                    { number: 4, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '10:55', endTime: '11:40', color: 'physics' },
+                    { number: 5, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '11:50', endTime: '12:35', color: 'english' }
+                ],
+                saturday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Qurbonov F.F.', room: '204', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '08:55', endTime: '09:40', color: 'chemistry' },
+                    { number: 3, name: 'Adabiyot', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'literature' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'informatics' }
+                ]
+            },
+            '11-A': {
+                monday: [
+                    { number: 1, name: 'Algebra', teacher: 'Karimov H.H.', room: '205', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'physics' },
+                    { number: 3, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '09:50', endTime: '10:35', color: 'chemistry' },
+                    { number: 4, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '10:55', endTime: '11:40', color: 'english' },
+                    { number: 5, name: 'Adabiyot', teacher: 'Yusupova S.S.', room: '104', startTime: '11:50', endTime: '12:35', color: 'literature' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'pe' }
+                ],
+                tuesday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Karimov H.H.', room: '205', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '09:50', endTime: '10:35', color: 'history' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'informatics' },
+                    { number: 5, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '11:50', endTime: '12:35', color: 'geography' }
+                ],
+                wednesday: [
+                    { number: 1, name: 'Algebra', teacher: 'Karimov H.H.', room: '205', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'physics' },
+                    { number: 3, name: 'Ona tili', teacher: 'Yusupova S.S.', room: '104', startTime: '09:50', endTime: '10:35', color: 'language' },
+                    { number: 4, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '10:55', endTime: '11:40', color: 'chemistry' },
+                    { number: 5, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '11:50', endTime: '12:35', color: 'english' },
+                    { number: 6, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '12:45', endTime: '13:30', color: 'informatics' }
+                ],
+                thursday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Karimov H.H.', room: '205', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Adabiyot', teacher: 'Yusupova S.S.', room: '104', startTime: '09:50', endTime: '10:35', color: 'literature' },
+                    { number: 4, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '10:55', endTime: '11:40', color: 'history' },
+                    { number: 5, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '11:50', endTime: '12:35', color: 'geography' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'pe' }
+                ],
+                friday: [
+                    { number: 1, name: 'Algebra', teacher: 'Karimov H.H.', room: '205', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '08:55', endTime: '09:40', color: 'physics' },
+                    { number: 3, name: 'Ona tili', teacher: 'Yusupova S.S.', room: '104', startTime: '09:50', endTime: '10:35', color: 'language' },
+                    { number: 4, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '10:55', endTime: '11:40', color: 'chemistry' },
+                    { number: 5, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '11:50', endTime: '12:35', color: 'english' }
+                ],
+                saturday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Karimov H.H.', room: '205', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Adabiyot', teacher: 'Yusupova S.S.', room: '104', startTime: '09:50', endTime: '10:35', color: 'literature' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'informatics' }
+                ]
+            },
+            '11-B': {
+                monday: [
+                    { number: 1, name: 'Algebra', teacher: 'Abdullayev J.J.', room: '206', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Ona tili', teacher: 'Ergasheva D.D.', room: '105', startTime: '08:55', endTime: '09:40', color: 'language' },
+                    { number: 3, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '09:50', endTime: '10:35', color: 'physics' },
+                    { number: 4, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '10:55', endTime: '11:40', color: 'english' },
+                    { number: 5, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '11:50', endTime: '12:35', color: 'history' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'pe' }
+                ],
+                tuesday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Abdullayev J.J.', room: '206', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '08:55', endTime: '09:40', color: 'chemistry' },
+                    { number: 3, name: 'Adabiyot', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'literature' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'informatics' },
+                    { number: 5, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '11:50', endTime: '12:35', color: 'geography' }
+                ],
+                wednesday: [
+                    { number: 1, name: 'Algebra', teacher: 'Abdullayev J.J.', room: '206', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Ona tili', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'language' },
+                    { number: 4, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '10:55', endTime: '11:40', color: 'physics' },
+                    { number: 5, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '11:50', endTime: '12:35', color: 'chemistry' },
+                    { number: 6, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '12:45', endTime: '13:30', color: 'informatics' }
+                ],
+                thursday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Abdullayev J.J.', room: '206', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '08:55', endTime: '09:40', color: 'english' },
+                    { number: 3, name: 'Adabiyot', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'literature' },
+                    { number: 4, name: 'Tarix', teacher: 'Rahimov B.B.', room: '208', startTime: '10:55', endTime: '11:40', color: 'history' },
+                    { number: 5, name: 'Geografiya', teacher: 'Toshmatov R.R.', room: '209', startTime: '11:50', endTime: '12:35', color: 'geography' },
+                    { number: 6, name: 'Jismoniy tarbiya', teacher: 'Aliyev K.K.', room: 'Sport', startTime: '12:45', endTime: '13:30', color: 'pe' }
+                ],
+                friday: [
+                    { number: 1, name: 'Algebra', teacher: 'Abdullayev J.J.', room: '206', startTime: '08:00', endTime: '08:45', color: 'algebra' },
+                    { number: 2, name: 'Biologiya', teacher: 'Mamadalieva Z.Z.', room: '307', startTime: '08:55', endTime: '09:40', color: 'biology' },
+                    { number: 3, name: 'Ona tili', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'language' },
+                    { number: 4, name: 'Fizika', teacher: 'Karimova M.M.', room: '305', startTime: '10:55', endTime: '11:40', color: 'physics' },
+                    { number: 5, name: 'Ingliz tili', teacher: 'Saidova N.N.', room: '102', startTime: '11:50', endTime: '12:35', color: 'english' }
+                ],
+                saturday: [
+                    { number: 1, name: 'Geometriya', teacher: 'Abdullayev J.J.', room: '206', startTime: '08:00', endTime: '08:45', color: 'geometry' },
+                    { number: 2, name: 'Kimyo', teacher: 'Husanova L.L.', room: '306', startTime: '08:55', endTime: '09:40', color: 'chemistry' },
+                    { number: 3, name: 'Adabiyot', teacher: 'Ergasheva D.D.', room: '105', startTime: '09:50', endTime: '10:35', color: 'literature' },
+                    { number: 4, name: 'Informatika', teacher: 'Normatov D.D.', room: '401', startTime: '10:55', endTime: '11:40', color: 'informatics' }
+                ]
+            }
         };
 
-        // Switch auth tabs
         function switchAuthTab(tab) {
             const tabs = document.querySelectorAll('.auth-tab');
             const forms = document.querySelectorAll('.auth-form');
@@ -1352,7 +1313,6 @@
             hideMessage('registerSuccess');
         }
 
-        // Show/hide message
         function showMessage(elementId, message) {
             const element = document.getElementById(elementId);
             element.textContent = message;
@@ -1363,7 +1323,6 @@
             document.getElementById(elementId).style.display = 'none';
         }
 
-        // Handle Login
         function handleLogin(event) {
             event.preventDefault();
 
@@ -1372,7 +1331,6 @@
 
             hideMessage('loginError');
 
-            // Get users from localStorage
             const users = JSON.parse(localStorage.getItem('users') || '[]');
             const user = users.find(u => (u.username === username || u.email === username) && u.password === password);
 
@@ -1388,7 +1346,6 @@
             showDashboard();
         }
 
-        // Handle Register
         function handleRegister(event) {
             event.preventDefault();
 
@@ -1412,10 +1369,8 @@
                 return;
             }
 
-            // Get existing users
             const users = JSON.parse(localStorage.getItem('users') || '[]');
 
-            // Check if username or email exists
             if (users.find(u => u.username === username)) {
                 showMessage('registerError', 'Bu login band!');
                 return;
@@ -1426,7 +1381,6 @@
                 return;
             }
 
-            // Add new user
             const newUser = { name, username, email, class: classValue, password };
             users.push(newUser);
             localStorage.setItem('users', JSON.stringify(users));
@@ -1439,23 +1393,19 @@
             }, 2000);
         }
 
-        // Show Dashboard
         function showDashboard() {
             document.getElementById('authWrapper').style.display = 'none';
             document.getElementById('dashboardWrapper').style.display = 'block';
 
-            // Update user info
             document.getElementById('userName').textContent = currentUser.name;
             document.getElementById('userClass').textContent = currentUser.class;
             document.getElementById('welcomeMessage').textContent = `Xush kelibsiz, ${currentUser.name}!`;
             document.getElementById('userAvatar').textContent = currentUser.name.charAt(0).toUpperCase();
 
-            // Load class selector
             loadClassSelector();
             loadSchedule();
         }
 
-        // Load class selector
         function loadClassSelector() {
             const classes = ['9-A', '9-B', '10-A', '10-B', '11-A', '11-B'];
             const container = document.getElementById('classSelector');
@@ -1465,23 +1415,9 @@
             ).join('');
         }
 
-        // Load schedule
         function loadSchedule() {
             const container = document.getElementById('lessonsContainer');
             const lessons = scheduleData[currentClass][currentDay];
-
-            if (lessons.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-icon">📅</div>
-                        <h3 class="empty-title">Darslar yo'q</h3>
-                        <p class="empty-text">Bu kun uchun hali darslar qo'shilmagan</p>
-                        <button class="btn btn-primary" onclick="openModal()">Dars qo'shish</button>
-                    </div>
-                `;
-                updateStats();
-                return;
-            }
 
             container.innerHTML = lessons.map(lesson => `
                 <div class="lesson-card ${lesson.color}">
@@ -1503,7 +1439,6 @@
             updateStats();
         }
 
-        // Update statistics
         function updateStats() {
             let totalLessons = 0;
             let teachers = new Set();
@@ -1520,7 +1455,6 @@
             document.getElementById('totalTeachers').textContent = teachers.size;
         }
 
-        // Select class
         function selectClass(btn, className) {
             document.querySelectorAll('.class-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -1528,7 +1462,6 @@
             loadSchedule();
         }
 
-        // Select day
         function selectDay(btn, day) {
             document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -1546,57 +1479,6 @@
             document.getElementById('scheduleTitle').textContent = `${dayNames[day]} - ${currentClass}`;
         }
 
-        // Modal functions
-        function openModal() {
-            document.getElementById('addLessonModal').classList.add('active');
-            document.getElementById('lessonDay').value = currentDay;
-        }
-
-        function closeModal() {
-            document.getElementById('addLessonModal').classList.remove('active');
-            document.querySelector('#addLessonModal form').reset();
-            selectColor(document.querySelector('.color-option'));
-        }
-
-        // Select color
-        function selectColor(element) {
-            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
-            element.classList.add('selected');
-            selectedColor = element.dataset.color;
-        }
-
-        // Add lesson
-        function addLesson(event) {
-            event.preventDefault();
-
-            const name = document.getElementById('lessonName').value;
-            const teacher = document.getElementById('lessonTeacher').value;
-            const day = document.getElementById('lessonDay').value;
-            const room = document.getElementById('lessonRoom').value;
-            const startTime = document.getElementById('lessonStartTime').value;
-            const endTime = document.getElementById('lessonEndTime').value;
-
-            const lessons = scheduleData[currentClass][day];
-            const newLesson = {
-                number: lessons.length + 1,
-                name,
-                teacher,
-                room,
-                startTime,
-                endTime,
-                color: selectedColor
-            };
-
-            scheduleData[currentClass][day].push(newLesson);
-            
-            if (day === currentDay) {
-                loadSchedule();
-            }
-
-            closeModal();
-        }
-
-        // Print schedule
         function printSchedule() {
             const printWindow = window.open('', '_blank');
             const lessons = scheduleData[currentClass][currentDay];
@@ -1655,7 +1537,6 @@
             printWindow.print();
         }
 
-        // Logout
         function handleLogout() {
             if (confirm('Rostdan ham tizimdan chiqmoqchimisiz?')) {
                 localStorage.removeItem('currentUser');
@@ -1664,7 +1545,6 @@
             }
         }
 
-        // Check login on load
         window.addEventListener('load', function() {
             const savedUser = localStorage.getItem('currentUser');
             if (savedUser) {
